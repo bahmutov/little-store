@@ -35,6 +35,28 @@ describe('little store', () => {
     la(o.foo === 42, o)
   })
 
+  it('can make multiple setters', () => {
+    const o = {}
+    const set = littleStore(o)
+    const setFoo = set('foo')
+    const setBar = set('bar')
+    la(is.fn(setFoo))
+    la(is.fn(setBar))
+    setFoo(42)
+    setBar(-1)
+    la(o.foo === 42, o)
+    la(o.bar === -1, o)
+  })
+
+  it('can make multiple setters on the fly', () => {
+    const o = {}
+    const set = littleStore(o)
+    set('foo')(42)
+    set('bar')(-1)
+    la(o.foo === 42, o)
+    la(o.bar === -1, o)
+  })
+
   it('work with this', function () {
     const setFoo = littleStore(this, 'foo')
     la(is.fn(setFoo))

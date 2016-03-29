@@ -8,6 +8,105 @@
 [![semantic-release][semantic-image] ][semantic-url]
 [![js-standard-style][standard-image]][standard-url]
 
+## Install and use
+
+```sh
+npm install --save little-store
+```
+
+```js
+const littleStore = require('little-store')
+const o = {}
+const setFoo = littleStore(o, 'foo')
+setFoo(o, 42) // returns 42
+// o is {foo: 42}
+```
+
+## Why?
+
+Mostly this is a convenient curried function for storing side data in promise chains. 
+With most functions only taking and passing a single argument, storing intermediate values is 
+a pain (see [my blog post][pass]). Functional libraries like Ramda and Lodash have nice 
+utilities for *getting a property* from a given object, like 
+[_.property](https://lodash.com/docs#property), but I could not find a simple *set property*
+function. Ramda has lenses, but those return a new object (which is nice) and this is not what
+I needed. Thus I was forced to do something like this - make a closure just to keep data from
+the first call
+
+```js
+function login () {
+    return getUsername()
+        .then(function (username) {
+            return getPassword()
+                .then(function (password) {
+                    // check username and password
+                })
+        })
+}
+```
+
+We can store the intermediate results from each promise in local mutable object
+
+```js
+function login () {
+    const state = {}
+    return getUsername()
+        .then((s) => {state.username = s})
+        .then(getPassword)
+        .then((s) => {state.password = s})
+        .then(function () {
+            // check username and password from state
+        })
+}
+```
+
+A lot more steps but smaller pyramid of promise doom.
+
+With generators, this is a lot less code, but not as simple to start in most cases
+
+```js
+function * checkPassword () {
+    const username = yield getUsername()
+    const password = yield getPassword()
+    // check username and password
+}
+```
+
+With `little-store` creating little "set" callbacks is simple (even multiple ones)
+
+```js
+const store = require('little-store')
+function login () {
+    const state = {}
+    return getUsername()
+        .then(store(state, 'username'))
+        .then(getPassword)
+        .then(store(state, 'password'))
+        .then(function () {
+            // check username and password from state
+        })
+}
+```
+
+We can even avoid `store(state, ...)` boilerplate since the `littleStore` is curried
+
+```js
+const store = require('little-store')
+function login () {
+    const state = {}
+    const remember = store(state)
+    return getUsername()
+        .then(remember('username'))
+        .then(getPassword)
+        .then(remember('password'))
+        .then(function () {
+            // check username and password from state
+        })
+}
+```
+
+[pass]: https://glebbahmutov.com/blog/passing-more-than-single-value-through-promise-chain/
+
 ### Small print
 
 Author: Gleb Bahmutov &lt;gleb.bahmutov@gmail.com&gt; &copy; 2016
