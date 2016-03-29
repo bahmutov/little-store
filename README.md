@@ -7,6 +7,7 @@
 [![Build status][ci-image] ][ci-url]
 [![semantic-release][semantic-image] ][semantic-url]
 [![js-standard-style][standard-image]][standard-url]
+![no sudden unpublish][https://img.shields.io/badge/no%20sudden-unpublish%20%E2%9A%93-ff69b4.svg]
 
 ## Install and use
 
