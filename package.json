@@ -1,0 +1,65 @@
+{
+  "name": "little-store",
+  "description": "Super simple curried storage in a given plain object when you just must have mutable state",
+  "version": "1.0.0",
+  "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
+  "bugs": "https://github.com/bahmutov/little-store/issues",
+  "config": {
+    "pre-git": {
+      "commit-msg": "simple",
+      "pre-commit": [
+        "npm test"
+      ],
+      "pre-push": [
+        "npm run size",
+        "npm run secure"
+      ],
+      "post-commit": [],
+      "post-merge": []
+    }
+  },
+  "files": [
+    "index.js",
+    "src/*.js",
+    "!src/*-spec.js"
+  ],
+  "homepage": "https://github.com/bahmutov/little-store#readme",
+  "keywords": [
+    "curried",
+    "mutable",
+    "object",
+    "state",
+    "store",
+    "utility"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bahmutov/little-store.git"
+  },
+  "scripts": {
+    "format": "standard-format -w index.js src/*.js",
+    "issues": "git-issues",
+    "lint": "standard --verbose index.js src/*.js",
+    "pretest": "npm run format && npm run lint",
+    "secure": "nsp check",
+    "size": "t=\"$(npm pack .)\"; wc -c \"${t}\"; tar tvf \"${t}\"; rm \"${t}\";",
+    "test": "npm run unit",
+    "unit": "NODE_PATH=.. mocha src/*-spec.js",
+    "commit": "commit-wizard"
+  },
+  "devDependencies": {
+    "git-issues": "1.2.0",
+    "lazy-ass": "1.4.0",
+    "mocha": "2.4.5",
+    "nsp": "2.2.2",
+    "pre-git": "3.7.1",
+    "standard": "6.0.8",
+    "standard-format": "2.1.1"
+  },
+  "dependencies": {
+    "check-more-types": "2.13.0",
+    "lodash.curry": "4.0.0"
+  }
+}
