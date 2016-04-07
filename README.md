@@ -108,6 +108,11 @@ function login () {
 
 [pass]: https://glebbahmutov.com/blog/passing-more-than-single-value-through-promise-chain/
 
+## Related
+
+* [functional-pipeline](https://github.com/bahmutov/functional-pipeline) is a utility for 
+  convenient data access and method calls.
+
 ### Small print
 
 Author: Gleb Bahmutov &lt;gleb.bahmutov@gmail.com&gt; &copy; 2016
