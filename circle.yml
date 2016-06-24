@@ -2,10 +2,10 @@ machine:
   services:
     - docker
   node:
-    version: 6
+    version: 5
 dependencies:
   override:
     - npm install -g autochecker@0.9.2
 test:
   override:
-    - autochecker 0.12 4 5 6
+    - autochecker 4
