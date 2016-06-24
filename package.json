@@ -48,17 +48,19 @@
     "test": "npm run unit",
     "unit": "NODE_PATH=.. mocha src/*-spec.js",
     "commit": "commit-wizard",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "check-all": "TEST_LIMIT=1 autochecker --verbose"
   },
   "devDependencies": {
+    "autochecker": "0.9.2",
     "git-issues": "1.2.0",
     "lazy-ass": "1.4.0",
     "mocha": "2.4.5",
     "nsp": "2.2.2",
     "pre-git": "3.0.0",
+    "semantic-release": "^4.3.5",
     "standard": "6.0.8",
-    "standard-format": "2.1.1",
-    "semantic-release": "^4.3.5"
+    "standard-format": "2.1.1"
   },
   "dependencies": {
     "check-more-types": "2.13.0",
