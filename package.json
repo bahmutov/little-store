@@ -46,12 +46,14 @@
     "secure": "nsp check",
     "size": "t=\"$(npm pack .)\"; wc -c \"${t}\"; tar tvf \"${t}\"; rm \"${t}\";",
     "test": "npm run unit",
-    "unit": "ls; NODE_PATH=.. mocha src/*-spec.js",
+    "unit": "ls; NODE_PATH=.. mocha --compilers js:babel-register src/*-spec.js",
     "commit": "commit-wizard",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
     "check-all": "TEST_LIMIT=1 autochecker --verbose"
   },
   "devDependencies": {
+    "babel-preset-es2015": "6.9.0",
+    "babel-register": "6.9.0",
     "git-issues": "1.2.0",
     "lazy-ass": "1.4.0",
     "mocha": "2.5.3",
