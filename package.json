@@ -52,7 +52,6 @@
     "check-all": "TEST_LIMIT=1 autochecker --verbose"
   },
   "devDependencies": {
-    "autochecker": "0.9.2",
     "git-issues": "1.2.0",
     "lazy-ass": "1.4.0",
     "mocha": "2.5.3",
