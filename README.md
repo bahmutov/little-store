@@ -9,6 +9,8 @@
 [![js-standard-style][standard-image]][standard-url]
 ![no sudden unpublish](https://img.shields.io/badge/no%20sudden-unpublish%20%E2%9A%93-ff69b4.svg)
 
+Testing in multiple Node versions [![Build Status](https://semaphoreci.com/api/v1/bahmutov/little-store/branches/master/badge.svg)](https://semaphoreci.com/bahmutov/little-store)
+
 ## Install and use
 
 ```sh
@@ -25,10 +27,10 @@ setFoo(o, 42) // returns 42
 
 ## Why?
 
-Mostly this is a convenient curried function for storing side data in promise chains. 
-With most functions only taking and passing a single argument, storing intermediate values is 
-a pain (see [my blog post][pass]). Functional libraries like Ramda and Lodash have nice 
-utilities for *getting a property* from a given object, like 
+Mostly this is a convenient curried function for storing side data in promise chains.
+With most functions only taking and passing a single argument, storing intermediate values is
+a pain (see [my blog post][pass]). Functional libraries like Ramda and Lodash have nice
+utilities for *getting a property* from a given object, like
 [_.property](https://lodash.com/docs#property), but I could not find a simple *set property*
 function. Ramda has lenses, but those return a new object (which is nice) and this is not what
 I needed. Thus I was forced to do something like this - make a closure just to keep data from
@@ -110,7 +112,7 @@ function login () {
 
 ## Related
 
-* [functional-pipeline](https://github.com/bahmutov/functional-pipeline) is a utility for 
+* [functional-pipeline](https://github.com/bahmutov/functional-pipeline) is a utility for
   convenient data access and method calls.
 
 ### Small print
