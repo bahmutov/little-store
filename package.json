@@ -46,7 +46,7 @@
     "secure": "nsp check",
     "size": "t=\"$(npm pack .)\"; wc -c \"${t}\"; tar tvf \"${t}\"; rm \"${t}\";",
     "test": "npm run unit",
-    "unit": "NODE_PATH=.. mocha src/*-spec.js",
+    "unit": "ls; NODE_PATH=.. mocha src/*-spec.js",
     "commit": "commit-wizard",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
     "check-all": "TEST_LIMIT=1 autochecker --verbose"

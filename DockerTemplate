@@ -1,6 +1,6 @@
 FROM mhart/alpine-node:$VERSION
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
+RUN mkdir -p /usr/src/app/little-store
+WORKDIR /usr/src/app/little-store
 COPY package.json .
 RUN npm install --ignore-scripts
 COPY . .
